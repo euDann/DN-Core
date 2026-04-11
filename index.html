@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="description" content="Portfolio - Desenvolvedor Full Stack e Criador de Soluções">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DN | Portfolio</title>
+
+  <style>
+    :root {
+      --primary-red: #e63946;
+      --dark-bg: #0d0d0d;
+      --card-bg: #1a1a1a;
+      --text-main: #e8eaf0;
+      --text-dim: rgba(255, 255, 255, 0.5);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--dark-bg); color: var(--text-main); font-family: system-ui, -apple-system, sans-serif; overflow-x: hidden; }
+
+    .bg-animation {
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      z-index: -1;
+      background: radial-gradient(circle at 50% 50%, #1a0a0a 0%, #000 100%);
+    }
+
+    .vs-page { background: rgba(13, 13, 13, 0.8); min-height: 100vh; position: relative; }
+
+    /* HEADER */
+    .vs-header {
+      background: #000;
+      border-bottom: 1px solid rgba(230, 57, 70, 0.2);
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 70px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .vs-logo-text { font-size: 20px; font-weight: 700; color: #fff; text-transform: uppercase; letter-spacing: 1px; }
+    .vs-logo-text span { color: var(--primary-red); }
+    .vs-nav a { font-size: 14px; color: var(--text-dim); text-decoration: none; margin-left: 2rem; transition: 0.3s; }
+    .vs-nav a:hover { color: var(--primary-red); }
+
+    /* BOTÕES */
+    .btn-primary {
+      background: var(--primary-red);
+      color: #fff;
+      border: none;
+      padding: 14px 30px;
+      border-radius: 5px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(230, 57, 70, 0.3); }
+    .btn-primary.pulsing { animation: pulse 2s infinite; }
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(230, 57, 70, 0.7); }
+      70% { box-shadow: 0 0 0 10px rgba(230, 57, 70, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(230, 57, 70, 0); }
+    }
+
+    /* SEÇÕES */
+    section { padding: 80px 2rem; max-width: 1100px; margin: 0 auto; }
+    .section-title { text-align: center; margin-bottom: 50px; }
+    .section-title h2 { font-size: 36px; margin-bottom: 10px; }
+    .section-title div { width: 50px; height: 4px; background: var(--primary-red); margin: 0 auto; }
+
+    /* HERO */
+    .vs-hero { text-align: center; padding: 120px 2rem 100px; }
+    .vs-hero h1 { font-size: 56px; line-height: 1.1; margin-bottom: 20px; }
+    .vs-hero h1 span { color: var(--primary-red); }
+    .vs-hero p { color: var(--text-dim); max-width: 600px; margin: 0 auto 40px; font-size: 18px; }
+
+    /* PROJETOS */
+    .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+    .project-card { background: var(--card-bg); border: 1px solid rgba(255,255,255,0.05); border-radius: 15px; overflow: hidden; transition: 0.4s; }
+    .project-card:hover { border-color: var(--primary-red); transform: translateY(-10px); }
+    .project-img { width: 100%; height: 200px; background: #333; object-fit: cover; }
+    .project-info { padding: 25px; }
+    .tag { font-size: 11px; background: rgba(255,255,255,0.1); padding: 3px 8px; border-radius: 3px; margin-right: 5px; color: var(--primary-red); }
+
+    /* TABELA */
+    .table-wrapper { overflow-x: auto; background: var(--card-bg); border-radius: 15px; border: 1px solid rgba(230, 57, 70, 0.2); padding: 10px; }
+    .vs-table { width: 100%; border-collapse: collapse; text-align: left; min-width: 600px; }
+    .vs-table th, .vs-table td { padding: 20px; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
+    .check-icon { color: var(--primary-red); font-weight: bold; }
+
+    /* SEO INFO BOX */
+    .vs-info-box { margin-top: 25px; background: rgba(255, 255, 255, 0.03); border-left: 4px solid var(--primary-red); padding: 20px; border-radius: 0 10px 10px 0; }
+
+    /* CTA FINAL */
+    .vs-cta-final { text-align: center; padding: 80px 2rem; background: rgba(230, 57, 70, 0.05); border-radius: 20px; margin: 40px auto; max-width: 800px; }
+
+    /* FOOTER */
+    .vs-footer { border-top: 1px solid rgba(255,255,255,0.05); padding: 60px 2rem; text-align: center; background: #050505; }
+    .vs-footer a { color: var(--text-dim); margin: 0 15px; text-decoration: none; }
+
+    .reveal { opacity: 0; transform: translateY(30px); transition: 0.8s ease-out; }
+    .reveal.active { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 768px) { .vs-hero h1 { font-size: 36px; } .vs-nav { display: none; } }
+  </style>
+</head>
+<body>
+
+<div class="bg-animation"></div>
+
+<div class="vs-page">
+  <header class="vs-header">
+    <div class="vs-logo-text">DEV.<span>PORTFOLIO</span></div>
+    <nav class="vs-nav">
+      <a href="#inicio">Início</a>
+      <a href="#projetos">Projetos</a>
+      <a href="#comparativo">Comparativo</a>
+    </nav>
+    <a href="https://wa.me/5521973561952" class="btn-primary pulsing" style="padding: 8px 18px;">Solicitar Orçamento</a>
+  </header>
+
+  <section class="vs-hero" id="inicio">
+    <h1>Transformando ideias em<br><span>experiências digitais</span></h1>
+    <p>Especialista em criar interfaces modernas, sistemas robustos e soluções sob medida.</p>
+    <div class="vs-hero-actions">
+      <a href="#projetos" class="btn-primary">Ver Portfólio</a>
+      <a href="https://wa.me/5521973561952" class="btn-primary" style="background: transparent; border: 1px solid var(--primary-red); margin-left: 10px;">Falar via WhatsApp</a>
+    </div>
+  </section>
+
+  <section class="vs-projects" id="projetos">
+    <div class="section-title reveal">
+      <h2>Meus Produtos</h2>
+      <div></div>
+    </div>
+    <div class="projects-grid">
+      <div class="project-card reveal">
+        <img src="https://via.placeholder.com/400x250/1a1a1a/e63946?text=Landing+Page" class="project-img">
+        <div class="project-info">
+          <h3>Site Estático</h3>
+          <p>Ideal para apresentações profissionais e portfólios de alta conversão.</p>
+          <div style="margin-bottom: 20px;"><span class="tag">Rápido</span><span class="tag">SEO</span></div>
+          <a href="https://wa.me/5521973561952?text=Quero+um+orçamento+para+Site+Estático" class="btn-primary" style="width: 100%; text-align: center;">Pedir Orçamento</a>
+        </div>
+      </div>
+      <div class="project-card reveal">
+        <img src="https://via.placeholder.com/400x250/1a1a1a/e63946?text=E-commerce" class="project-img">
+        <div class="project-info">
+          <h3>Loja Virtual</h3>
+          <p>Sua loja aberta 24h com pagamentos integrados e gestão de estoque.</p>
+          <div style="margin-bottom: 20px;"><span class="tag">Vendas</span><span class="tag">Pagamentos</span></div>
+          <a href="https://wa.me/5521973561952?text=Quero+um+orçamento+para+Loja+Virtual" class="btn-primary" style="width: 100%; text-align: center;">Pedir Orçamento</a>
+        </div>
+      </div>
+      <div class="project-card reveal">
+        <img src="https://via.placeholder.com/400x250/1a1a1a/e63946?text=Web+App" class="project-img">
+        <div class="project-info">
+          <h3>Site Completo</h3>
+          <p>Sistemas personalizados com bancos de dados e painéis administrativos.</p>
+          <div style="margin-bottom: 20px;"><span class="tag">Completo</span><span class="tag">Dashboard</span></div>
+          <a href="https://wa.me/5521973561952?text=Quero+um+orçamento+para+Site+Completo" class="btn-primary" style="width: 100%; text-align: center;">Pedir Orçamento</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="vs-comparison reveal" id="comparativo">
+    <div class="section-title">
+      <h2>Comparativo de Soluções</h2>
+      <div></div>
+    </div>
+    <div class="table-wrapper">
+      <table class="vs-table">
+        <thead>
+          <tr>
+            <th>Recursos</th>
+            <th>Site Estático</th>
+            <th>Loja Virtual</th>
+            <th>Site Completo</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Design Responsivo</td><td class="check-icon">✔</td><td class="check-icon">✔</td><td class="check-icon">✔</td></tr>
+          <tr><td>Pagamentos</td><td>—</td><td class="check-icon">✔</td><td class="check-icon">✔</td></tr>
+          <tr><td>Banco de Dados</td><td>—</td><td class="check-icon">✔</td><td class="check-icon">✔</td></tr>
+          <tr><td>Suporte VIP</td><td>—</td><td>—</td><td class="check-icon">✔</td></tr>
+          <tr><td>SEO Otimizado</td><td class="check-icon">✔</td><td class="check-icon">✔</td><td class="check-icon">✔</td></tr>
+        </tbody>
+      </table>
+      <div class="vs-info-box">
+        <h5 style="color: var(--primary-red); margin-bottom: 5px;">✦ O que é SEO Otimizado?</h5>
+        <p style="font-size: 13px; color: var(--text-dim);">Técnicas que fazem seu site aparecer nos primeiros resultados do Google organicamente, atraindo mais clientes.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="reveal">
+    <div class="vs-cta-final">
+      <h3>Pronto para tirar seu projeto do papel?</h3>
+      <p style="margin-bottom: 30px; color: var(--text-dim);">Entre em contato agora para uma consultoria gratuita e um orçamento personalizado.</p>
+      <a href="https://wa.me/5521973561952" class="btn-primary pulsing" style="font-size: 18px; padding: 20px 40px;">Iniciar Conversa no WhatsApp</a>
+    </div>
+  </section>
+
+  <footer class="vs-footer">
+    <p>© 2026 DN Sites. Excelência em cada linha de código.</p>
+    <div style="margin-top: 15px;">
+      <a href="#">GitHub</a>
+      <a href="#">LinkedIn</a>
+      <a href="#">Instagram</a>
+    </div>
+  </footer>
+</div>
+
+<script>
+  window.addEventListener('scroll', reveal);
+  function reveal() {
+    var reveals = document.querySelectorAll(".reveal");
+    for (var i = 0; i < reveals.length; i++) {
+      var windowHeight = window.innerHeight;
+      var revealTop = reveals[i].getBoundingClientRect().top;
+      if (revealTop < windowHeight - 100) {
+        reveals[i].classList.add("active");
+      }
+    }
+  }
+  reveal();
+</script>
+</body>
+</html>
