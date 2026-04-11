@@ -7,6 +7,7 @@
   <title>DN | Portfolio</title>
 
   <style>
+    /* Variáveis e Reset */
     :root {
       --primary-red: #e63946;
       --dark-bg: #0d0d0d;
@@ -28,11 +29,11 @@
 
     .vs-page { background: rgba(13, 13, 13, 0.8); min-height: 100vh; position: relative; }
 
-    /* HEADER */
+    /* HEADER AJUSTADO */
     .vs-header {
       background: #000;
       border-bottom: 1px solid rgba(230, 57, 70, 0.2);
-      padding: 0 2rem;
+      padding: 0 1rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -41,25 +42,25 @@
       top: 0;
       z-index: 100;
     }
-    .vs-logo-text { font-size: 20px; font-weight: 700; color: #fff; text-transform: uppercase; letter-spacing: 1px; }
+    .vs-logo-text { font-size: 16px; font-weight: 700; color: #fff; text-transform: uppercase; letter-spacing: 1px; }
     .vs-logo-text span { color: var(--primary-red); }
-    .vs-nav a { font-size: 14px; color: var(--text-dim); text-decoration: none; margin-left: 2rem; transition: 0.3s; }
-    .vs-nav a:hover { color: var(--primary-red); }
+    
+    .vs-nav { display: none; } /* Escondido no mobile para não bugar */
 
     /* BOTÕES */
     .btn-primary {
       background: var(--primary-red);
       color: #fff;
       border: none;
-      padding: 14px 30px;
+      padding: 12px 24px;
       border-radius: 5px;
       font-weight: 600;
       cursor: pointer;
       transition: 0.3s;
       text-decoration: none;
       display: inline-block;
+      text-align: center;
     }
-    .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(230, 57, 70, 0.3); }
     .btn-primary.pulsing { animation: pulse 2s infinite; }
     @keyframes pulse {
       0% { box-shadow: 0 0 0 0 rgba(230, 57, 70, 0.7); }
@@ -67,46 +68,79 @@
       100% { box-shadow: 0 0 0 0 rgba(230, 57, 70, 0); }
     }
 
-    /* SEÇÕES */
-    section { padding: 80px 2rem; max-width: 1100px; margin: 0 auto; }
-    .section-title { text-align: center; margin-bottom: 50px; }
-    .section-title h2 { font-size: 36px; margin-bottom: 10px; }
-    .section-title div { width: 50px; height: 4px; background: var(--primary-red); margin: 0 auto; }
-
-    /* HERO */
-    .vs-hero { text-align: center; padding: 120px 2rem 100px; }
-    .vs-hero h1 { font-size: 56px; line-height: 1.1; margin-bottom: 20px; }
+    /* HERO AJUSTADA PARA MOBILE */
+    section { padding: 60px 1.5rem; max-width: 1100px; margin: 0 auto; }
+    .vs-hero { text-align: center; padding: 80px 1.5rem 60px; }
+    .vs-hero h1 { font-size: 38px; line-height: 1.1; margin-bottom: 20px; }
     .vs-hero h1 span { color: var(--primary-red); }
-    .vs-hero p { color: var(--text-dim); max-width: 600px; margin: 0 auto 40px; font-size: 18px; }
+    .vs-hero p { color: var(--text-dim); margin-bottom: 35px; font-size: 16px; }
+
+    .vs-hero-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      align-items: center;
+    }
+    .vs-hero-actions .btn-primary { width: 100%; max-width: 280px; }
 
     /* PROJETOS */
-    .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-    .project-card { background: var(--card-bg); border: 1px solid rgba(255,255,255,0.05); border-radius: 15px; overflow: hidden; transition: 0.4s; }
-    .project-card:hover { border-color: var(--primary-red); transform: translateY(-10px); }
-    .project-img { width: 100%; height: 200px; background: #333; object-fit: cover; }
-    .project-info { padding: 25px; }
-    .tag { font-size: 11px; background: rgba(255,255,255,0.1); padding: 3px 8px; border-radius: 3px; margin-right: 5px; color: var(--primary-red); }
+    .section-title { text-align: center; margin-bottom: 40px; }
+    .section-title h2 { font-size: 28px; margin-bottom: 10px; }
+    .section-title div { width: 40px; height: 3px; background: var(--primary-red); margin: 0 auto; }
 
-    /* TABELA */
-    .table-wrapper { overflow-x: auto; background: var(--card-bg); border-radius: 15px; border: 1px solid rgba(230, 57, 70, 0.2); padding: 10px; }
-    .vs-table { width: 100%; border-collapse: collapse; text-align: left; min-width: 600px; }
-    .vs-table th, .vs-table td { padding: 20px; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
-    .check-icon { color: var(--primary-red); font-weight: bold; }
+    .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
+    .project-card { background: var(--card-bg); border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.05); }
+    .project-img { width: 100%; height: 180px; background: #222; object-fit: cover; }
+    .project-info { padding: 20px; }
+    .tag { font-size: 10px; background: rgba(230, 57, 70, 0.1); color: var(--primary-red); padding: 4px 8px; border-radius: 4px; margin-right: 5px; font-weight: bold; }
 
-    /* SEO INFO BOX */
-    .vs-info-box { margin-top: 25px; background: rgba(255, 255, 255, 0.03); border-left: 4px solid var(--primary-red); padding: 20px; border-radius: 0 10px 10px 0; }
+    /* TABELA COM INDICADOR DE SCROLL */
+    .table-container { position: relative; margin-top: 20px; }
+    .table-wrapper { overflow-x: auto; background: var(--card-bg); border-radius: 12px; border: 1px solid rgba(230, 57, 70, 0.2); }
+    .vs-table { width: 100%; border-collapse: collapse; min-width: 600px; font-size: 14px; }
+    .vs-table th, .vs-table td { padding: 15px; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
+    .vs-table th { background: rgba(230, 57, 70, 0.1); color: var(--primary-red); }
+    
+    .scroll-hint {
+      text-align: right;
+      font-size: 11px;
+      color: var(--primary-red);
+      margin-top: 8px;
+      font-weight: bold;
+      animation: hintMove 2s infinite;
+    }
+    @keyframes hintMove {
+      0%, 100% { transform: translateX(0); opacity: 0.6; }
+      50% { transform: translateX(-8px); opacity: 1; }
+    }
+
+    /* INFO BOX SEO */
+    .vs-info-box { margin-top: 20px; background: rgba(255, 255, 255, 0.03); border-left: 4px solid var(--primary-red); padding: 15px; border-radius: 0 8px 8px 0; }
+    .vs-info-box h5 { color: var(--primary-red); font-size: 13px; margin-bottom: 5px; }
+    .vs-info-box p { font-size: 12px; color: var(--text-dim); line-height: 1.5; }
 
     /* CTA FINAL */
-    .vs-cta-final { text-align: center; padding: 80px 2rem; background: rgba(230, 57, 70, 0.05); border-radius: 20px; margin: 40px auto; max-width: 800px; }
+    .vs-cta-final { text-align: center; padding: 40px 1.5rem; background: rgba(230, 57, 70, 0.05); border-radius: 15px; margin-top: 40px; }
 
     /* FOOTER */
-    .vs-footer { border-top: 1px solid rgba(255,255,255,0.05); padding: 60px 2rem; text-align: center; background: #050505; }
-    .vs-footer a { color: var(--text-dim); margin: 0 15px; text-decoration: none; }
+    .vs-footer { padding: 40px 1rem; text-align: center; background: #050505; font-size: 12px; border-top: 1px solid rgba(255,255,255,0.05); }
+    .vs-footer div { margin-top: 15px; }
+    .vs-footer a { color: var(--text-dim); text-decoration: none; margin: 0 10px; }
 
-    .reveal { opacity: 0; transform: translateY(30px); transition: 0.8s ease-out; }
+    /* REVEAL ANIMATION */
+    .reveal { opacity: 0; transform: translateY(20px); transition: 0.6s ease-out; }
     .reveal.active { opacity: 1; transform: translateY(0); }
 
-    @media (max-width: 768px) { .vs-hero h1 { font-size: 36px; } .vs-nav { display: none; } }
+    /* AJUSTES PARA DESKTOP */
+    @media (min-width: 768px) {
+      .vs-header { padding: 0 2rem; }
+      .vs-logo-text { font-size: 20px; }
+      .vs-nav { display: block; }
+      .vs-hero h1 { font-size: 56px; }
+      .vs-hero-actions { flex-direction: row; justify-content: center; }
+      .scroll-hint { display: none; }
+      .section-title h2 { font-size: 36px; }
+    }
   </style>
 </head>
 <body>
@@ -117,19 +151,19 @@
   <header class="vs-header">
     <div class="vs-logo-text">DEV.<span>PORTFOLIO</span></div>
     <nav class="vs-nav">
-      <a href="#inicio">Início</a>
-      <a href="#projetos">Projetos</a>
-      <a href="#comparativo">Comparativo</a>
+      <a href="#inicio" style="color:var(--text-dim); text-decoration:none; margin-right:20px; font-size:14px;">Início</a>
+      <a href="#projetos" style="color:var(--text-dim); text-decoration:none; margin-right:20px; font-size:14px;">Produtos</a>
     </nav>
-    <a href="https://wa.me/5521973561952" class="btn-primary pulsing" style="padding: 8px 18px;">Solicitar Orçamento</a>
+    <a href="https://wa.me/5521973561952" class="btn-primary pulsing" style="font-size: 12px; padding: 8px 15px;">Solicitar Orçamento</a>
   </header>
 
   <section class="vs-hero" id="inicio">
+    <div style="font-size: 11px; border: 1px solid var(--primary-red); display: inline-block; padding: 4px 12px; border-radius: 20px; color: var(--primary-red); margin-bottom: 15px;">✦ FULL STACK DEVELOPER</div>
     <h1>Transformando ideias em<br><span>experiências digitais</span></h1>
-    <p>Especialista em criar interfaces modernas, sistemas robustos e soluções sob medida.</p>
+    <p>Sistemas modernos e interfaces exclusivas para o seu negócio.</p>
     <div class="vs-hero-actions">
       <a href="#projetos" class="btn-primary">Ver Portfólio</a>
-      <a href="https://wa.me/5521973561952" class="btn-primary" style="background: transparent; border: 1px solid var(--primary-red); margin-left: 10px;">Falar via WhatsApp</a>
+      <a href="https://wa.me/5521973561952" class="btn-primary" style="background:transparent; border:1px solid var(--primary-red);">Falar via WhatsApp</a>
     </div>
   </section>
 
@@ -140,30 +174,30 @@
     </div>
     <div class="projects-grid">
       <div class="project-card reveal">
-        <img src="https://via.placeholder.com/400x250/1a1a1a/e63946?text=Landing+Page" class="project-img">
+        <div class="project-img" style="display:flex; align-items:center; justify-content:center; color:#444;">[Imagem: Site Estático]</div>
         <div class="project-info">
           <h3>Site Estático</h3>
-          <p>Ideal para apresentações profissionais e portfólios de alta conversão.</p>
-          <div style="margin-bottom: 20px;"><span class="tag">Rápido</span><span class="tag">SEO</span></div>
-          <a href="https://wa.me/5521973561952?text=Quero+um+orçamento+para+Site+Estático" class="btn-primary" style="width: 100%; text-align: center;">Pedir Orçamento</a>
+          <p style="font-size:13px; color:var(--text-dim); margin: 10px 0 15px;">Perfeito para Landing Pages e cartões de visita digitais.</p>
+          <div style="margin-bottom: 15px;"><span class="tag">HTML/CSS</span><span class="tag">SEO</span></div>
+          <a href="https://wa.me/5521973561952" class="btn-primary" style="width:100%;">Pedir Orçamento</a>
         </div>
       </div>
       <div class="project-card reveal">
-        <img src="https://via.placeholder.com/400x250/1a1a1a/e63946?text=E-commerce" class="project-img">
+        <div class="project-img" style="display:flex; align-items:center; justify-content:center; color:#444;">[Imagem: Loja Virtual]</div>
         <div class="project-info">
           <h3>Loja Virtual</h3>
-          <p>Sua loja aberta 24h com pagamentos integrados e gestão de estoque.</p>
-          <div style="margin-bottom: 20px;"><span class="tag">Vendas</span><span class="tag">Pagamentos</span></div>
-          <a href="https://wa.me/5521973561952?text=Quero+um+orçamento+para+Loja+Virtual" class="btn-primary" style="width: 100%; text-align: center;">Pedir Orçamento</a>
+          <p style="font-size:13px; color:var(--text-dim); margin: 10px 0 15px;">E-commerce completo com checkout e gestão de produtos.</p>
+          <div style="margin-bottom: 15px;"><span class="tag">REACT</span><span class="tag">PIX/CARD</span></div>
+          <a href="https://wa.me/5521973561952" class="btn-primary" style="width:100%;">Pedir Orçamento</a>
         </div>
       </div>
       <div class="project-card reveal">
-        <img src="https://via.placeholder.com/400x250/1a1a1a/e63946?text=Web+App" class="project-img">
+        <div class="project-img" style="display:flex; align-items:center; justify-content:center; color:#444;">[Imagem: Site Completo]</div>
         <div class="project-info">
           <h3>Site Completo</h3>
-          <p>Sistemas personalizados com bancos de dados e painéis administrativos.</p>
-          <div style="margin-bottom: 20px;"><span class="tag">Completo</span><span class="tag">Dashboard</span></div>
-          <a href="https://wa.me/5521973561952?text=Quero+um+orçamento+para+Site+Completo" class="btn-primary" style="width: 100%; text-align: center;">Pedir Orçamento</a>
+          <p style="font-size:13px; color:var(--text-dim); margin: 10px 0 15px;">Sistemas robustos com Dashboard e Banco de Dados.</p>
+          <div style="margin-bottom: 15px;"><span class="tag">NODE.JS</span><span class="tag">DATABASE</span></div>
+          <a href="https://wa.me/5521973561952" class="btn-primary" style="width:100%;">Pedir Orçamento</a>
         </div>
       </div>
     </div>
@@ -171,65 +205,68 @@
 
   <section class="vs-comparison reveal" id="comparativo">
     <div class="section-title">
-      <h2>Comparativo de Soluções</h2>
+      <h2>Comparativo</h2>
       <div></div>
     </div>
-    <div class="table-wrapper">
-      <table class="vs-table">
-        <thead>
-          <tr>
-            <th>Recursos</th>
-            <th>Site Estático</th>
-            <th>Loja Virtual</th>
-            <th>Site Completo</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><td>Design Responsivo</td><td class="check-icon">✔</td><td class="check-icon">✔</td><td class="check-icon">✔</td></tr>
-          <tr><td>Pagamentos</td><td>—</td><td class="check-icon">✔</td><td class="check-icon">✔</td></tr>
-          <tr><td>Banco de Dados</td><td>—</td><td class="check-icon">✔</td><td class="check-icon">✔</td></tr>
-          <tr><td>Suporte VIP</td><td>—</td><td>—</td><td class="check-icon">✔</td></tr>
-          <tr><td>SEO Otimizado</td><td class="check-icon">✔</td><td class="check-icon">✔</td><td class="check-icon">✔</td></tr>
-        </tbody>
-      </table>
-      <div class="vs-info-box">
-        <h5 style="color: var(--primary-red); margin-bottom: 5px;">✦ O que é SEO Otimizado?</h5>
-        <p style="font-size: 13px; color: var(--text-dim);">Técnicas que fazem seu site aparecer nos primeiros resultados do Google organicamente, atraindo mais clientes.</p>
+    <div class="table-container">
+      <div class="table-wrapper">
+        <table class="vs-table">
+          <thead>
+            <tr>
+              <th>Recursos</th>
+              <th>Estático</th>
+              <th>Loja</th>
+              <th>Completo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Responsivo</td><td style="color:var(--primary-red);">✔</td><td style="color:var(--primary-red);">✔</td><td style="color:var(--primary-red);">✔</td></tr>
+            <tr><td>Pagamentos</td><td>—</td><td style="color:var(--primary-red);">✔</td><td style="color:var(--primary-red);">✔</td></tr>
+            <tr><td>Banco Dados</td><td>—</td><td style="color:var(--primary-red);">✔</td><td style="color:var(--primary-red);">✔</td></tr>
+            <tr><td>Suporte VIP</td><td>—</td><td>—</td><td style="color:var(--primary-red);">✔</td></tr>
+            <tr><td>SEO</td><td style="color:var(--primary-red);">✔</td><td style="color:var(--primary-red);">✔</td><td style="color:var(--primary-red);">✔</td></tr>
+          </tbody>
+        </table>
       </div>
+      <div class="scroll-hint">Deslize para ver mais →</div>
+    </div>
+
+    <div class="vs-info-box">
+      <h5>✦ O que é SEO Otimizado?</h5>
+      <p>Técnicas que fazem seu site aparecer no topo do Google organicamente, gerando visitas sem pagar anúncios.</p>
     </div>
   </section>
 
   <section class="reveal">
     <div class="vs-cta-final">
-      <h3>Pronto para tirar seu projeto do papel?</h3>
-      <p style="margin-bottom: 30px; color: var(--text-dim);">Entre em contato agora para uma consultoria gratuita e um orçamento personalizado.</p>
-      <a href="https://wa.me/5521973561952" class="btn-primary pulsing" style="font-size: 18px; padding: 20px 40px;">Iniciar Conversa no WhatsApp</a>
+      <h3 style="margin-bottom:15px;">Vamos começar seu projeto?</h3>
+      <a href="https://wa.me/5521973561952" class="btn-primary pulsing" style="width:100%; max-width:300px;">Chamar no WhatsApp</a>
     </div>
   </section>
 
   <footer class="vs-footer">
-    <p>© 2026 DN Sites. Excelência em cada linha de código.</p>
-    <div style="margin-top: 15px;">
+    <p>© 2026 DN Sites. Excelência em código.</p>
+    <div>
       <a href="#">GitHub</a>
       <a href="#">LinkedIn</a>
-      <a href="#">Instagram</a>
     </div>
   </footer>
 </div>
 
 <script>
-  window.addEventListener('scroll', reveal);
   function reveal() {
     var reveals = document.querySelectorAll(".reveal");
     for (var i = 0; i < reveals.length; i++) {
       var windowHeight = window.innerHeight;
       var revealTop = reveals[i].getBoundingClientRect().top;
-      if (revealTop < windowHeight - 100) {
+      if (revealTop < windowHeight - 50) {
         reveals[i].classList.add("active");
       }
     }
   }
+  window.addEventListener('scroll', reveal);
   reveal();
 </script>
+
 </body>
 </html>
