@@ -4,182 +4,22 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>DN Core | Sites de Alta Conversão & Sistemas Full Stack</title>
+  <title>DN Core</title>
   <meta name="description" content="Desenvolvimento de Sites rápidos, lojas virtuais e sistemas personalizados. Transforme sua presença digital em um negócio lucrativo.">
   <meta name="keywords" content="desenvolvedor web, criar site, landing page, ecommerce, full stack, programador freelancer">
   <meta name="author" content="DN Software & Design">
 
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://seusite.com.br/"> <meta property="og:title" content="DN Core | Soluções Web de Alto Padrão">
+  <meta property="og:url" content="https://seusite.com.br/"> 
+  <meta property="og:title" content="DN Core | Soluções Web de Alto Padrão">
   <meta property="og:description" content="Interfaces modernas e sistemas robustos. Pronto para elevar o nível do seu negócio?">
-  <meta property="og:image" content="https://seusite.com.br/thumb-compartilhamento.jpg"> <meta property="twitter:card" content="summary_large_image">
-  <meta property="twitter:title" content="DN Core | Soluções Web">
-  <meta property="twitter:description" content="Desenvolvendo ideias com excelência e código.">
+  <meta property="og:image" content="https://seusite.com.br/thumb-compartilhamento.jpg"> 
 
-  <style>
-    :root {
-      --primary-red: #e63946;
-      --dark-bg: #0a0a0a;
-      --card-bg: #161616;
-      --text-main: #e8eaf0;
-      --text-dim: rgba(255, 255, 255, 0.5);
-      --grid-color: rgba(230, 57, 70, 0.06);
-    }
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="apple-touch-icon" href="favicon.svg">
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body { background: var(--dark-bg); color: var(--text-main); font-family: system-ui, -apple-system, sans-serif; overflow-x: hidden; position: relative; }
-
-    .bg-grid-overlay {
-      position: fixed;
-      top: 0; left: 0; width: 100%; height: 100%;
-      z-index: -2;
-      background-image: 
-        linear-gradient(var(--grid-color) 1px, transparent 1px),
-        linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
-      background-size: 40px 40px;
-    }
-
-    .bg-animation {
-      position: fixed;
-      top: 0; left: 0; width: 100%; height: 100%;
-      z-index: -1;
-      background: radial-gradient(circle at 50% 50%, rgba(40, 10, 10, 0.8) 0%, #000 100%);
-    }
-
-    .vs-header {
-      background: rgba(10, 10, 10, 0.75);
-      backdrop-filter: blur(12px) saturate(180%);
-      -webkit-backdrop-filter: blur(12px) saturate(180%);
-      border-bottom: 1px solid rgba(230, 57, 70, 0.2);
-      padding: 0 1.5rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 75px;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-    .vs-logo-text { font-size: 18px; font-weight: 700; color: #fff; text-transform: uppercase; letter-spacing: 1px; }
-    .vs-logo-text span { color: var(--primary-red); }
-    
-    .vs-nav { display: none; } 
-    .vs-nav a { 
-        color: var(--text-dim); 
-        text-decoration: none; 
-        margin-right: 25px; 
-        font-size: 14px; 
-        font-weight: 500; 
-        transition: 0.3s;
-    }
-    .vs-nav a:hover { color: #fff; }
-
-    .btn-primary {
-      background: var(--primary-red);
-      color: #fff;
-      border: none;
-      padding: 12px 24px;
-      border-radius: 6px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      text-decoration: none;
-      display: inline-block;
-      text-align: center;
-    }
-    .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(230, 57, 70, 0.4); }
-    .btn-primary.pulsing { animation: pulse 2s infinite; }
-
-    .btn-example {
-      background: transparent;
-      color: var(--text-dim);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      padding: 10px 24px;
-      border-radius: 6px;
-      font-weight: 500;
-      cursor: pointer;
-      transition: 0.3s;
-      text-decoration: none;
-      display: inline-block;
-      text-align: center;
-      margin-top: 10px;
-      font-size: 13px;
-    }
-    .btn-example:hover {
-      border-color: var(--primary-red);
-      color: #fff;
-      background: rgba(230, 57, 70, 0.05);
-    }
-    
-    @keyframes pulse {
-      0% { box-shadow: 0 0 0 0 rgba(230, 57, 70, 0.7); }
-      70% { box-shadow: 0 0 0 12px rgba(230, 57, 70, 0); }
-      100% { box-shadow: 0 0 0 0 rgba(230, 57, 70, 0); }
-    }
-
-    section { padding: 60px 1.5rem; max-width: 1200px; margin: 0 auto; }
-    .vs-hero { text-align: center; padding: 100px 1.5rem 80px; }
-    .vs-hero h1 { font-size: 42px; line-height: 1.1; margin-bottom: 25px; font-weight: 800; letter-spacing: -1px; }
-    .vs-hero h1 span { color: var(--primary-red); }
-    .vs-hero p { color: var(--text-dim); margin-bottom: 40px; font-size: 17px; max-width: 550px; margin-left: auto; margin-right: auto; line-height: 1.6; }
-
-    .vs-hero-actions { display: flex; flex-direction: column; gap: 25px; align-items: center; }
-
-    .section-title { text-align: center; margin-bottom: 40px; }
-    .section-title h2 { font-size: 32px; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 2px; }
-    .section-title div { width: 50px; height: 4px; background: var(--primary-red); margin: 0 auto; border-radius: 2px; }
-
-    .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-    
-    .project-card { 
-      background: var(--card-bg); 
-      border-radius: 16px; 
-      padding: 30px;
-      border: 1px solid rgba(255,255,255,0.05); 
-      transition: 0.4s; 
-      display: flex; 
-      flex-direction: column;
-      position: relative;
-    }
-    .project-card:hover { border-color: rgba(230, 57, 70, 0.5); transform: translateY(-8px); }
-    .project-card h3 { color: #fff; margin-bottom: 10px; font-size: 24px; }
-
-    .tag { font-size: 10px; background: rgba(230, 57, 70, 0.15); color: var(--primary-red); padding: 5px 10px; border-radius: 4px; margin-right: 6px; font-weight: 700; text-transform: uppercase; }
-
-    .feature-list { list-style: none; margin-bottom: 20px; text-align: left; }
-    .feature-list li { font-size: 13px; color: var(--text-dim); margin-bottom: 8px; display: flex; align-items: flex-start; }
-    .feature-list li::before { content: "✓"; color: var(--primary-red); margin-right: 8px; font-weight: bold; }
-
-    .table-wrapper { overflow-x: auto; background: var(--card-bg); border-radius: 16px; border: 1px solid rgba(255, 255, 255, 0.05); }
-    .vs-table { width: 100%; border-collapse: collapse; min-width: 600px; }
-    .vs-table th, .vs-table td { padding: 22px; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
-    .vs-table th { background: rgba(255, 255, 255, 0.03); color: var(--primary-red); text-align: left; text-transform: uppercase; font-size: 12px; letter-spacing: 1px; }
-
-    .seo-box { margin-top: 15px; padding: 20px; background: rgba(255,255,255,0.02); border-radius: 12px; border-left: 3px solid var(--primary-red); }
-
-    .vs-cta-card {
-      background: linear-gradient(145deg, #0f0f0f 0%, #050505 100%);
-      border: 1px solid rgba(230, 57, 70, 0.15);
-      border-radius: 24px;
-      padding: 60px 20px;
-      text-align: center;
-      margin-top: 0;
-    }
-
-    .vs-footer { padding: 60px 1rem; text-align: center; background: #050505; border-top: 1px solid rgba(255,255,255,0.05); }
-
-    .reveal { opacity: 0; transform: translateY(30px); transition: 0.8s ease-out; }
-    .reveal.active { opacity: 1; transform: translateY(0); }
-
-    @media (min-width: 768px) {
-      .vs-nav { display: block; }
-      .vs-hero h1 { font-size: 64px; }
-      .vs-hero-actions { flex-direction: row; justify-content: center; gap: 20px; }
-      section { padding: 90px 1.5rem; }
-      .vs-cta-card { margin-top: 40px; }
-    }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -188,7 +28,26 @@
 
 <div class="vs-page">
   <header class="vs-header">
-    <div class="vs-logo-text">DEV.<span>PORTFOLIO</span></div>
+    <a href="#inicio" class="vs-logo-wrapper">
+      <svg class="vs-logo-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="50" cy="50" r="46" stroke="var(--primary-red)" stroke-width="1.5" stroke-dasharray="10 15" opacity="0.3">
+        <animateTransform attributeName="transform" type="rotate" from="0 50 50" to="360 50 50" dur="20s" repeatCount="indefinite" />
+    </circle>
+    
+    <circle cx="50" cy="50" r="38" stroke="var(--primary-red)" stroke-width="2" stroke-dasharray="20 10" opacity="0.6">
+        <animateTransform attributeName="transform" type="rotate" from="360 50 50" to="0 50 50" dur="15s" repeatCount="indefinite" />
+    </circle>
+    
+    <path d="M38 35V65M38 35H48C58 35 62 42 62 50C62 58 58 65 48 65H38" stroke="white" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+    
+    <circle cx="50" cy="50" r="4" fill="var(--primary-red)">
+        <animate attributeName="r" values="3;5;3" dur="2s" repeatCount="indefinite" />
+        <animate attributeName="opacity" values="0.5;1;0.5" dur="2s" repeatCount="indefinite" />
+    </circle>
+</svg>
+      <div class="vs-logo-text">DN<span>CORE</span></div>
+    </a>
+    
     <nav class="vs-nav">
       <a href="#inicio">Início</a>
       <a href="#projetos">Produtos</a>
@@ -200,7 +59,7 @@
   <section class="vs-hero" id="inicio">
     <div style="font-size: 11px; border: 1px solid rgba(230, 57, 70, 0.4); display: inline-block; padding: 6px 16px; border-radius: 30px; color: var(--primary-red); margin-bottom: 20px; font-weight: 700; letter-spacing: 2px; background: rgba(230,57,70,0.05);">✦ SOLUÇÕES FULL STACK</div>
     <h1>Transformando códigos em<br><span>negócios lucrativos</span></h1>
-    <p>Interfaces de alto padrão e sistemas robustos. Desenvolvo a tecnologia enquanto você foca no crescimento da sua marca.</p>
+    <p>Interfaces de alto padrão e sistemas robustos. Desenvolvemos o núcleo tecnológico enquanto você foca no crescimento da sua marca.</p>
     <div class="vs-hero-actions">
       <a href="#projetos" class="btn-primary">Explorar Produtos</a>
       <a href="https://wa.me/5521973561952?text=Olá! Gostaria de uma consultoria gratuita sobre meu projeto." class="btn-primary" style="background:transparent; border:1px solid var(--primary-red);">Consultoria Grátis</a>
@@ -212,11 +71,11 @@
       <h2>Catálogo de Soluções</h2>
       <div></div>
     </div>
-
+ 
     <div class="projects-grid">
       <div class="project-card reveal">
         <h3>Site Estático</h3>
-        <p style="font-size:14px; color:var(--text-dim); margin: 10px 0 20px; line-height:1.5;">Otimizadas para conversão e velocidade extrema. Ideal para anúncios e lançamentos ou vendas via whatsapp.</p>
+        <p style="font-size:14px; color:var(--text-dim); margin: 10px 0 20px; line-height:1.5;">Otimizadas para conversão e velocidade extrema. Ideal para anúncios e lançamentos via WhatsApp.</p>
         <div style="margin-bottom: 20px;"><span class="tag">Speed+</span><span class="tag">SEO</span></div>
         <a href="https://wa.me/5521973561952?text=Olá! Vim pelo portfólio e quero um orçamento de Site Estático." class="btn-primary" style="width:100%;">Solicitar Orçamento</a>
         <a href="landing-page.html" class="btn-example" style="width:100%;">Ver Exemplo</a>
@@ -224,26 +83,26 @@
 
       <div class="project-card reveal">
         <h3>Lojas Virtuais</h3>
-        <p style="font-size:14px; color:var(--text-dim); margin: 10px 0 20px; line-height:1.5;">Lojas escaláveis com integração de pagamentos (Pix/Cartão) e gestão de estoque.</p>
+        <p style="font-size:14px; color:var(--text-dim); margin: 10px 0 20px; line-height:1.5;">Lojas escaláveis com integração de pagamentos (Pix/Cartão) e gestão automatizada.</p>
         <div style="margin-bottom: 20px;"><span class="tag">React</span><span class="tag">Checkout</span></div>
         <a href="https://wa.me/5521973561952?text=Olá! Vim pelo portfólio e quero um orçamento de Loja Virtual." class="btn-primary" style="width:100%;">Solicitar Orçamento</a>
         <a href="loja-virtual.html" class="btn-example" style="width:100%;">Ver Exemplo</a>
       </div>
 
       <div class="project-card reveal" style="border-color: rgba(230, 57, 70, 0.4); background: linear-gradient(180deg, #1a1a1a 0%, #161616 100%);">
-        <div style="position: absolute; top: -12px; right: 20px; background: var(--primary-red); color: white; padding: 4px 12px; border-radius: 20px; font-size: 10px; font-weight: 800;">MAIS COMPLETO</div>
-        <h3 style="color: var(--primary-red);">Site completo</h3>
-        <p style="font-size:14px; color:var(--text-dim); margin: 10px 0 15px; line-height:1.5;">A solução definitiva para quem quer o máximo de performance, vendas e controle total do negócio.</p>
-        <ul class="feature-list">
-          <li><strong>Tudo do Site Estático</strong></li>
-          <li><strong>Tudo da Loja Virtual</strong></li>
-          <li>Painel de Controle Exclusivo</li>
-          <li>Banco de Dados e Relatórios</li>
-        </ul>
-        <div style="margin-bottom: 20px;"><span class="tag">Full Stack</span><span class="tag">Premium</span></div>
-        <a href="https://wa.me/5521973561952?text=Olá! Vim pelo portfólio e quero falar sobre um projeto de Sistema Completo." class="btn-primary" style="width:100%;">Projeto Personalizado</a>
-        <a href="sistemas.html" class="btn-example" style="width:100%;">Ver Exemplo</a>
-      </div>
+    <div class="badge-featured">MAIS COMPLETO</div>
+    <h3 style="color: var(--primary-red);">Site Completo</h3>
+    <p style="font-size:14px; color:var(--text-dim); margin: 10px 0 15px; line-height:1.5;">A solução definitiva com painel administrativo e controle total do seu ecossistema digital.</p>
+    <ul class="feature-list">
+        <li><strong>Performance Máxima</strong></li>
+        <li><strong>Gestão de Conteúdo</strong></li>
+        <li>Banco de Dados Exclusivo</li>
+        <li>Relatórios de Vendas</li>
+    </ul>
+    <div style="margin-bottom: 20px;"><span class="tag">Full Stack</span><span class="tag">Premium</span></div>
+    <a href="https://wa.me/5521973561952?text=Olá! Quero falar sobre um projeto de Sistema Completo." class="btn-primary" style="width:100%;">Projeto Personalizado</a>
+    <a href="sistemas.html" class="btn-example" style="width:100%;">Ver Exemplo</a>
+</div>
     </div>
   </section>
 
@@ -272,42 +131,29 @@
     </div>
 
     <div class="seo-box">
-      <h4 style="font-size: 14px; color: #fff; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 1px;">
-        💡 O que é SEO?
-      </h4>
-      <p style="font-size: 13px; color: var(--text-dim); line-height: 1.6; max-width: 800px;">
-        Em termos simples: é o que faz sua empresa <strong>aparecer nas primeiras buscas do Google</strong>. Sem SEO, seu site é invisível; com ele, seu negócio atrai clientes qualificados sem depender apenas de anúncios pagos.
-      </p>
-    </div>
+  <h4 style="font-size: 14px; color: #fff; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 1px;">💡 O QUE É SEO?</h4>
+  <p style="font-size: 13px; color: var(--text-dim); line-height: 1.6; max-width: 800px;">
+    SEO é a estratégia que coloca sua empresa no <strong>topo do Google</strong> sem precisar pagar por anúncios. Ele garante que seu site seja encontrado por quem já está procurando pelo seu produto ou serviço, gerando <strong>vendas orgânicas e autoridade constante</strong> para sua marca.
+  </p>
+</div>
   </section>
 
   <section class="reveal" style="padding-top: 0;">
     <div class="vs-cta-card">
-      <h3>Vamos começar seu projeto?</h3>
-      <p style="margin-bottom: 30px;">Entre em contato agora para uma consultoria gratuita e transforme sua ideia em realidade.</p>
-      <a href="https://wa.me/5521973561952?text=Olá! Gostaria de iniciar um projeto com você. Podemos conversar?" class="btn-primary" style="padding: 18px 45px; text-transform: uppercase; letter-spacing: 1px; font-size: 14px;">
+      <h3>Vamos iniciar o seu projeto?</h3>
+      <p style="margin-bottom: 30px; color: var(--text-dim);">Entre em contato agora para uma consultoria gratuita.</p>
+      <a href="https://wa.me/5521973561952?text=Olá! Gostaria de iniciar um projeto com a DN Core. Podemos conversar?" class="btn-primary" style="padding: 18px 45px; text-transform: uppercase; letter-spacing: 1px; font-size: 14px;">
         CHAMAR NO WHATSAPP
       </a>
     </div>
   </section>
 
   <footer class="vs-footer">
-    <p style="color:var(--text-dim);">© 2026 DN Core | Software & Design Excellence.</p>
+    <p style="color:var(--text-dim); font-size: 14px;">© 2026 DN Core | Software & Design Excellence.</p>
   </footer>
 </div>
 
-<script>
-  function reveal() {
-    var reveals = document.querySelectorAll(".reveal");
-    for (var i = 0; i < reveals.length; i++) {
-      var windowHeight = window.innerHeight;
-      var revealTop = reveals[i].getBoundingClientRect().top;
-      if (revealTop < windowHeight - 70) reveals[i].classList.add("active");
-    }
-  }
-  window.addEventListener('scroll', reveal);
-  reveal();
-</script>
+<script src="script.js"></script>
 
 </body>
 </html>
