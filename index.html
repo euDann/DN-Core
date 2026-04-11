@@ -7,21 +7,19 @@
   <title>DN | Portfolio</title>
 
   <style>
-    /* Variáveis e Reset */
     :root {
       --primary-red: #e63946;
       --dark-bg: #0a0a0a;
       --card-bg: #161616;
       --text-main: #e8eaf0;
       --text-dim: rgba(255, 255, 255, 0.5);
-      --grid-color: rgba(230, 57, 70, 0.04);
+      --grid-color: rgba(230, 57, 70, 0.06);
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
     body { background: var(--dark-bg); color: var(--text-main); font-family: system-ui, -apple-system, sans-serif; overflow-x: hidden; position: relative; }
 
-    /* FUNDO GEOMÉTRICO FIXO */
     .bg-grid-overlay {
       position: fixed;
       top: 0; left: 0; width: 100%; height: 100%;
@@ -29,152 +27,143 @@
       background-image: 
         linear-gradient(var(--grid-color) 1px, transparent 1px),
         linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
-      background-size: 30px 30px;
+      background-size: 40px 40px;
     }
 
     .bg-animation {
       position: fixed;
       top: 0; left: 0; width: 100%; height: 100%;
       z-index: -1;
-      background: radial-gradient(circle at 50% 50%, rgba(26, 10, 10, 0.8) 0%, #000 100%);
+      background: radial-gradient(circle at 50% 50%, rgba(40, 10, 10, 0.8) 0%, #000 100%);
     }
 
-    .vs-page { background: transparent; min-height: 100vh; position: relative; }
-
-    /* HEADER */
     .vs-header {
-      background: rgba(0, 0, 0, 0.9);
-      backdrop-filter: blur(10px);
+      background: rgba(10, 10, 10, 0.75);
+      backdrop-filter: blur(12px) saturate(180%);
+      -webkit-backdrop-filter: blur(12px) saturate(180%);
       border-bottom: 1px solid rgba(230, 57, 70, 0.2);
-      padding: 0 1rem;
+      padding: 0 1.5rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      height: 70px;
+      height: 75px;
       position: sticky;
       top: 0;
       z-index: 100;
     }
-    .vs-logo-text { font-size: 16px; font-weight: 700; color: #fff; text-transform: uppercase; letter-spacing: 1px; }
+    .vs-logo-text { font-size: 18px; font-weight: 700; color: #fff; text-transform: uppercase; letter-spacing: 1px; }
     .vs-logo-text span { color: var(--primary-red); }
+    
     .vs-nav { display: none; } 
+    .vs-nav a { 
+        color: var(--text-dim); 
+        text-decoration: none; 
+        margin-right: 25px; 
+        font-size: 14px; 
+        font-weight: 500; 
+        transition: 0.3s;
+    }
+    .vs-nav a:hover { color: #fff; }
 
-    /* BOTÕES */
     .btn-primary {
       background: var(--primary-red);
       color: #fff;
       border: none;
       padding: 12px 24px;
-      border-radius: 5px;
+      border-radius: 6px;
       font-weight: 600;
+      cursor: pointer;
+      transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      text-decoration: none;
+      display: inline-block;
+      text-align: center;
+    }
+    .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(230, 57, 70, 0.4); }
+    .btn-primary.pulsing { animation: pulse 2s infinite; }
+
+    .btn-example {
+      background: transparent;
+      color: var(--text-dim);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 10px 24px;
+      border-radius: 6px;
+      font-weight: 500;
       cursor: pointer;
       transition: 0.3s;
       text-decoration: none;
       display: inline-block;
       text-align: center;
+      margin-top: 10px;
+      font-size: 13px;
     }
-    .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(230, 57, 70, 0.3); }
-    .btn-primary.pulsing { animation: pulse 2s infinite; }
+    .btn-example:hover {
+      border-color: var(--primary-red);
+      color: #fff;
+      background: rgba(230, 57, 70, 0.05);
+    }
+    
     @keyframes pulse {
       0% { box-shadow: 0 0 0 0 rgba(230, 57, 70, 0.7); }
-      70% { box-shadow: 0 0 0 10px rgba(230, 57, 70, 0); }
+      70% { box-shadow: 0 0 0 12px rgba(230, 57, 70, 0); }
       100% { box-shadow: 0 0 0 0 rgba(230, 57, 70, 0); }
     }
 
-    /* HERO */
-    section { padding: 80px 1.5rem; max-width: 1100px; margin: 0 auto; }
-    .vs-hero { text-align: center; padding: 100px 1.5rem 80px; }
-    .vs-hero h1 { font-size: 38px; line-height: 1.1; margin-bottom: 20px; font-weight: 800; }
+    section { padding: 90px 1.5rem; max-width: 1200px; margin: 0 auto; }
+    .vs-hero { text-align: center; padding: 120px 1.5rem 100px; }
+    .vs-hero h1 { font-size: 42px; line-height: 1.1; margin-bottom: 25px; font-weight: 800; letter-spacing: -1px; }
     .vs-hero h1 span { color: var(--primary-red); }
-    .vs-hero p { color: var(--text-dim); margin-bottom: 35px; font-size: 16px; max-width: 500px; margin-left: auto; margin-right: auto; }
+    .vs-hero p { color: var(--text-dim); margin-bottom: 40px; font-size: 17px; max-width: 550px; margin-left: auto; margin-right: auto; line-height: 1.6; }
 
-    .vs-hero-actions {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      align-items: center;
-    }
-    .vs-hero-actions .btn-primary { width: 100%; max-width: 280px; }
+    .vs-hero-actions { display: flex; flex-direction: column; gap: 15px; align-items: center; }
 
-    /* PROJETOS (SEM IMAGENS) */
-    .section-title { text-align: center; margin-bottom: 40px; }
-    .section-title h2 { font-size: 28px; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 1px; }
-    .section-title div { width: 40px; height: 3px; background: var(--primary-red); margin: 0 auto; }
+    .section-title { text-align: center; margin-bottom: 50px; }
+    .section-title h2 { font-size: 32px; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 2px; }
+    .section-title div { width: 50px; height: 4px; background: var(--primary-red); margin: 0 auto; border-radius: 2px; }
 
-    .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
-    .project-card { background: var(--card-bg); border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.03); transition: 0.3s; display: flex; flex-direction: column; }
-    .project-card:hover { border-color: rgba(230, 57, 70, 0.5); transform: translateY(-5px); }
+    .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
     
-    /* Placeholder para onde ficarão suas imagens */
-    .image-placeholder { 
-      width: 100%; 
-      height: 180px; 
-      background: #111; 
+    .project-card { 
+      background: var(--card-bg); 
+      border-radius: 16px; 
+      padding: 30px;
+      border: 1px solid rgba(255,255,255,0.05); 
+      transition: 0.4s; 
       display: flex; 
-      align-items: center; 
-      justify-content: center;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+      flex-direction: column;
       position: relative;
     }
-    .image-placeholder::after {
-      content: 'Espaço para Imagem';
-      color: #333;
-      font-size: 12px;
-      font-weight: 600;
-      text-transform: uppercase;
+    .project-card:hover { border-color: rgba(230, 57, 70, 0.5); transform: translateY(-8px); }
+    .project-card h3 { color: #fff; margin-bottom: 10px; font-size: 24px; }
+
+    .tag { font-size: 10px; background: rgba(230, 57, 70, 0.15); color: var(--primary-red); padding: 5px 10px; border-radius: 4px; margin-right: 6px; font-weight: 700; text-transform: uppercase; }
+
+    .feature-list { list-style: none; margin-bottom: 20px; text-align: left; }
+    .feature-list li { font-size: 13px; color: var(--text-dim); margin-bottom: 8px; display: flex; align-items: flex-start; }
+    .feature-list li::before { content: "✓"; color: var(--primary-red); margin-right: 8px; font-weight: bold; }
+
+    .table-wrapper { overflow-x: auto; background: var(--card-bg); border-radius: 16px; border: 1px solid rgba(255, 255, 255, 0.05); }
+    .vs-table { width: 100%; border-collapse: collapse; min-width: 600px; }
+    .vs-table th, .vs-table td { padding: 22px; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
+    .vs-table th { background: rgba(255, 255, 255, 0.03); color: var(--primary-red); text-align: left; text-transform: uppercase; font-size: 12px; letter-spacing: 1px; }
+
+    .vs-cta-card {
+      background: linear-gradient(145deg, #0f0f0f 0%, #050505 100%);
+      border: 1px solid rgba(230, 57, 70, 0.15);
+      border-radius: 24px;
+      padding: 60px 20px;
+      text-align: center;
+      margin-top: 40px;
     }
 
-    .project-info { padding: 20px; flex-grow: 1; }
-    .tag { font-size: 10px; background: rgba(230, 57, 70, 0.1); color: var(--primary-red); padding: 4px 8px; border-radius: 4px; margin-right: 5px; font-weight: bold; text-transform: uppercase; }
+    .vs-footer { padding: 60px 1rem; text-align: center; background: #050505; border-top: 1px solid rgba(255,255,255,0.05); }
 
-    /* TABELA */
-    .table-container { position: relative; margin-top: 20px; }
-    .table-wrapper { overflow-x: auto; background: var(--card-bg); border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.03); }
-    .vs-table { width: 100%; border-collapse: collapse; min-width: 600px; font-size: 14px; }
-    .vs-table th, .vs-table td { padding: 20px; border-bottom: 1px solid rgba(255, 255, 255, 0.03); }
-    .vs-table th { background: rgba(255, 255, 255, 0.02); color: var(--primary-red); text-align: left; text-transform: uppercase; font-size: 12px; letter-spacing: 1px; }
-    
-    .scroll-hint {
-      text-align: right;
-      font-size: 11px;
-      color: var(--primary-red);
-      margin-top: 8px;
-      font-weight: bold;
-      animation: hintMove 2s infinite;
-    }
-    @keyframes hintMove {
-      0%, 100% { transform: translateX(0); opacity: 0.6; }
-      50% { transform: translateX(-8px); opacity: 1; }
-    }
-
-    /* INFO BOX SEO */
-    .vs-info-box { margin-top: 20px; background: rgba(230, 57, 70, 0.03); border-left: 3px solid var(--primary-red); padding: 15px; border-radius: 0 8px 8px 0; }
-    .vs-info-box h5 { color: var(--primary-red); font-size: 13px; margin-bottom: 5px; text-transform: uppercase; }
-    .vs-info-box p { font-size: 12px; color: var(--text-dim); line-height: 1.5; }
-
-    /* CTA FINAL */
-    .vs-cta-final { text-align: center; padding: 50px 1.5rem; background: rgba(230, 57, 70, 0.03); border-radius: 15px; margin-top: 40px; border: 1px solid rgba(230, 57, 70, 0.1); }
-
-    /* FOOTER */
-    .vs-footer { padding: 40px 1rem; text-align: center; background: #000; font-size: 12px; border-top: 1px solid rgba(255,255,255,0.03); }
-    .vs-footer div { margin-top: 15px; }
-    .vs-footer a { color: var(--text-dim); text-decoration: none; margin: 0 10px; transition: 0.3s; }
-    .vs-footer a:hover { color: var(--primary-red); }
-
-    /* REVEAL ANIMATION */
-    .reveal { opacity: 0; transform: translateY(20px); transition: 0.6s ease-out; }
+    .reveal { opacity: 0; transform: translateY(30px); transition: 0.8s ease-out; }
     .reveal.active { opacity: 1; transform: translateY(0); }
 
-    /* DESKTOP ADJUSTMENTS */
     @media (min-width: 768px) {
-      .vs-header { padding: 0 2rem; }
-      .vs-logo-text { font-size: 20px; }
       .vs-nav { display: block; }
-      .vs-hero h1 { font-size: 56px; }
+      .vs-hero h1 { font-size: 64px; }
       .vs-hero-actions { flex-direction: row; justify-content: center; gap: 20px; }
-      .vs-hero-actions .btn-primary { width: auto; }
-      .scroll-hint { display: none; }
-      .section-title h2 { font-size: 36px; }
     }
   </style>
 </head>
@@ -187,107 +176,100 @@
   <header class="vs-header">
     <div class="vs-logo-text">DEV.<span>PORTFOLIO</span></div>
     <nav class="vs-nav">
-      <a href="#inicio" style="color:var(--text-dim); text-decoration:none; margin-right:25px; font-size:14px; font-weight:500;">Início</a>
-      <a href="#projetos" style="color:var(--text-dim); text-decoration:none; margin-right:25px; font-size:14px; font-weight:500;">Produtos</a>
+      <a href="#inicio">Início</a>
+      <a href="#projetos">Produtos</a>
+      <a href="#comparativo">Vantagens</a>
     </nav>
-    <a href="https://wa.me/5521973561952?text=Olá!%20Gostaria%20de%20solicitar%20um%20orçamento%20para%20meu%20projeto." class="btn-primary pulsing" style="font-size: 12px; padding: 9px 18px; border-radius:4px;">Solicitar Orçamento</a>
+    <a href="https://wa.me/5521973561952?text=Olá! Gostaria de um orçamento rápido para um projeto web." class="btn-primary pulsing" style="font-size: 12px; padding: 10px 20px;">Orçamento Rápido</a>
   </header>
 
   <section class="vs-hero" id="inicio">
-    <div style="font-size: 10px; border: 1px solid rgba(230, 57, 70, 0.3); display: inline-block; padding: 5px 14px; border-radius: 20px; color: var(--primary-red); margin-bottom: 15px; font-weight: 700; letter-spacing: 1px;">✦ FULL STACK DEVELOPER</div>
-    <h1>Transformando ideias em<br><span>experiências digitais</span></h1>
-    <p>Sistemas modernos, código limpo e interfaces exclusivas pensadas para o sucesso do seu negócio.</p>
+    <div style="font-size: 11px; border: 1px solid rgba(230, 57, 70, 0.4); display: inline-block; padding: 6px 16px; border-radius: 30px; color: var(--primary-red); margin-bottom: 20px; font-weight: 700; letter-spacing: 2px; background: rgba(230,57,70,0.05);">✦ SOLUÇÕES FULL STACK</div>
+    <h1>Transformando códigos em<br><span>negócios lucrativos</span></h1>
+    <p>Interfaces de alto padrão e sistemas robustos. Desenvolvo a tecnologia enquanto você foca no crescimento da sua marca.</p>
     <div class="vs-hero-actions">
-      <a href="#projetos" class="btn-primary">Ver Portfólio</a>
-      <a href="https://wa.me/5521973561952?text=Olá!%20Vi%20seu%20site%20e%20gostaria%20de%20conversar%20sobre%20um%20projeto." class="btn-primary" style="background:transparent; border:1px solid var(--primary-red);">Falar via WhatsApp</a>
+      <a href="#projetos" class="btn-primary">Explorar Produtos</a>
+      <a href="https://wa.me/5521973561952?text=Olá! Gostaria de uma consultoria gratuita sobre meu projeto." class="btn-primary" style="background:transparent; border:1px solid var(--primary-red);">Consultoria Grátis</a>
     </div>
   </section>
 
-  <section class="vs-projects" id="projetos">
+  <section id="projetos">
     <div class="section-title reveal">
-      <h2>Meus Produtos</h2>
+      <h2>Catálogo de Soluções</h2>
       <div></div>
     </div>
+
     <div class="projects-grid">
       <div class="project-card reveal">
-        <div class="image-placeholder"></div>
-        <div class="project-info">
-          <h3>Site Estático</h3>
-          <p style="font-size:13px; color:var(--text-dim); margin: 10px 0 18px; line-height:1.4;">Perfeito para Landing Pages de alta conversão e cartões de visita digitais.</p>
-          <div style="margin-bottom: 18px;"><span class="tag">HTML/CSS</span><span class="tag">SEO</span></div>
-          <a href="https://wa.me/5521973561952?text=Olá!%20Gostaria%20de%20um%20orçamento%20para%20um%20Site%20Estático." class="btn-primary" style="width:100%; border-radius:4px;">Pedir Orçamento</a>
-        </div>
+        <h3>Site Estático</h3>
+        <p style="font-size:14px; color:var(--text-dim); margin: 10px 0 20px; line-height:1.5;">Otimizadas para conversão e velocidade extrema. Ideal para anúncios e lançamentos ou vendas via whatsapp.</p>
+        <div style="margin-bottom: 20px;"><span class="tag">Speed+</span><span class="tag">SEO</span></div>
+        <a href="https://wa.me/5521973561952?text=Olá! Vim pelo portfólio e quero um orçamento de Site Estático." class="btn-primary" style="width:100%;">Solicitar Orçamento</a>
+        <a href="landing-page.html" class="btn-example" style="width:100%;">Ver Exemplo (Mockup)</a>
       </div>
+
       <div class="project-card reveal">
-        <div class="image-placeholder"></div>
-        <div class="project-info">
-          <h3>Loja Virtual</h3>
-          <p style="font-size:13px; color:var(--text-dim); margin: 10px 0 18px; line-height:1.4;">E-commerce completo com checkout seguro e gestão simplificada de produtos.</p>
-          <div style="margin-bottom: 18px;"><span class="tag">REACT</span><span class="tag">PIX/CARD</span></div>
-          <a href="https://wa.me/5521973561952?text=Olá!%20Gostaria%20de%20um%20orçamento%20para%20uma%20Loja%20Virtual." class="btn-primary" style="width:100%; border-radius:4px;">Pedir Orçamento</a>
-        </div>
+        <h3>Lojas Virtuais</h3>
+        <p style="font-size:14px; color:var(--text-dim); margin: 10px 0 20px; line-height:1.5;">Lojas escaláveis com integração de pagamentos (Pix/Cartão) e gestão de estoque.</p>
+        <div style="margin-bottom: 20px;"><span class="tag">React</span><span class="tag">Checkout</span></div>
+        <a href="https://wa.me/5521973561952?text=Olá! Vim pelo portfólio e quero um orçamento de Loja Virtual." class="btn-primary" style="width:100%;">Solicitar Orçamento</a>
+        <a href="loja-virtual.html" class="btn-example" style="width:100%;">Ver Exemplo (Mockup)</a>
       </div>
-      <div class="project-card reveal">
-        <div class="image-placeholder"></div>
-        <div class="project-info">
-          <h3>Site Completo</h3>
-          <p style="font-size:13px; color:var(--text-dim); margin: 10px 0 18px; line-height:1.4;">Sistemas web robustos com Dashboard administrativo e Banco de Dados.</p>
-          <div style="margin-bottom: 18px;"><span class="tag">NODE.JS</span><span class="tag">DATABASE</span></div>
-          <a href="https://wa.me/5521973561952?text=Olá!%20Gostaria%20de%20um%20orçamento%20para%20um%20Site%20Completo/Sistema." class="btn-primary" style="width:100%; border-radius:4px;">Pedir Orçamento</a>
-        </div>
+
+      <div class="project-card reveal" style="border-color: rgba(230, 57, 70, 0.4); background: linear-gradient(180deg, #1a1a1a 0%, #161616 100%);">
+        <div style="position: absolute; top: -12px; right: 20px; background: var(--primary-red); color: white; padding: 4px 12px; border-radius: 20px; font-size: 10px; font-weight: 800;">MAIS COMPLETO</div>
+        <h3 style="color: var(--primary-red);">Site completo</h3>
+        <p style="font-size:14px; color:var(--text-dim); margin: 10px 0 15px; line-height:1.5;">A solução definitiva para quem quer o máximo de performance, vendas e controle total do negócio.</p>
+        <ul class="feature-list">
+          <li><strong>Tudo do Site Estático</strong></li>
+          <li><strong>Tudo da Loja Virtual</strong></li>
+          <li>Painel de Controle Exclusivo</li>
+          <li>Banco de Dados e Relatórios</li>
+        </ul>
+        <div style="margin-bottom: 20px;"><span class="tag">Full Stack</span><span class="tag">Premium</span></div>
+        <a href="https://wa.me/5521973561952?text=Olá! Vim pelo portfólio e quero falar sobre um projeto de Sistema Completo." class="btn-primary" style="width:100%;">Projeto Personalizado</a>
+        <a href="sistemas.html" class="btn-example" style="width:100%;">Ver Exemplo (Mockup)</a>
       </div>
     </div>
   </section>
 
-  <section class="vs-comparison reveal" id="comparativo">
+  <section class="reveal" id="comparativo">
     <div class="section-title">
-      <h2>Comparativo</h2>
+      <h2>Transparência Total</h2>
       <div></div>
     </div>
-    <div class="table-container">
-      <div class="table-wrapper">
-        <table class="vs-table">
-          <thead>
-            <tr>
-              <th>Recursos</th>
-              <th>Estático</th>
-              <th>Loja</th>
-              <th>Completo</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><td>Design Responsivo</td><td style="color:var(--primary-red); font-weight:bold;">✔</td><td style="color:var(--primary-red); font-weight:bold;">✔</td><td style="color:var(--primary-red); font-weight:bold;">✔</td></tr>
-            <tr><td>Painel Admin</td><td>—</td><td style="color:var(--primary-red); font-weight:bold;">✔</td><td style="color:var(--primary-red); font-weight:bold;">✔</td></tr>
-            <tr><td>Integração Pagamento</td><td>—</td><td style="color:var(--primary-red); font-weight:bold;">✔</td><td style="color:var(--primary-red); font-weight:bold;">✔</td></tr>
-            <tr><td>Banco de Dados</td><td>—</td><td style="color:var(--primary-red); font-weight:bold;">✔</td><td style="color:var(--primary-red); font-weight:bold;">✔</td></tr>
-            <tr><td>Suporte VIP</td><td>—</td><td>—</td><td style="color:var(--primary-red); font-weight:bold;">✔</td></tr>
-            <tr><td>SEO Otimizado</td><td style="color:var(--primary-red); font-weight:bold;">✔</td><td style="color:var(--primary-red); font-weight:bold;">✔</td><td style="color:var(--primary-red); font-weight:bold;">✔</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="scroll-hint">Deslize para ver mais →</div>
-    </div>
-
-    <div class="vs-info-box reveal">
-      <h5>✦ O que é SEO Otimizado?</h5>
-      <p>Conjunto de técnicas aplicadas no código que fazem seu site aparecer no topo dos resultados do Google organicamente, gerando visitas qualificadas sem pagar anúncios.</p>
+    <div class="table-wrapper">
+      <table class="vs-table">
+        <thead>
+          <tr>
+            <th>Recursos Inclusos</th>
+            <th>Estático</th>
+            <th>Loja</th>
+            <th>Sistemas</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Design Exclusivo</td><td style="color:var(--primary-red);">✔</td><td style="color:var(--primary-red);">✔</td><td style="color:var(--primary-red);">✔</td></tr>
+          <tr><td>Velocidade & Performance</td><td style="color:var(--primary-red);">✔</td><td style="color:var(--primary-red);">✔</td><td style="color:var(--primary-red);">✔</td></tr>
+          <tr><td>Otimização SEO Google</td><td style="color:var(--primary-red);">✔</td><td style="color:var(--primary-red);">✔</td><td style="color:var(--primary-red);">✔</td></tr>
+          <tr><td>Painel Administrativo</td><td>—</td><td style="color:var(--primary-red);">✔</td><td style="color:var(--primary-red);">✔</td></tr>
+        </tbody>
+      </table>
     </div>
   </section>
 
   <section class="reveal">
-    <div class="vs-cta-final">
-      <h3 style="margin-bottom:15px; font-weight:700;">Vamos começar seu projeto?</h3>
-      <p style="color:var(--text-dim); font-size:14px; margin-bottom:25px; max-width:400px; margin-left:auto; margin-right:auto;">Entre em contato agora para uma consultoria gratuita e transforme sua ideia em realidade.</p>
-      <a href="https://wa.me/5521973561952?text=Olá!%20Estou%20pronto%20para%20começar%20meu%20projeto,%20vamos%20conversar?" class="btn-primary pulsing" style="width:100%; max-width:300px; border-radius:4px; text-transform:uppercase; font-size:14px; letter-spacing:1px;">Chamar no WhatsApp</a>
+    <div class="vs-cta-card">
+      <h3>Vamos começar seu projeto?</h3>
+      <p>Entre em contato agora para uma consultoria gratuita e transforme sua ideia em realidade.</p>
+      <a href="https://wa.me/5521973561952?text=Olá! Gostaria de iniciar um projeto com você. Podemos conversar?" class="btn-primary" style="padding: 18px 45px; text-transform: uppercase; letter-spacing: 1px; font-size: 14px;">
+        CHAMAR NO WHATSAPP
+      </a>
     </div>
   </section>
 
   <footer class="vs-footer">
-    <p style="color:var(--text-dim);">© 2026 DN Sites. Excelência em cada linha de código.</p>
-    <div>
-      <a href="https://github.com/dudu-00">GitHub</a>
-      <a href="https://linkedin.com">LinkedIn</a>
-    </div>
+    <p style="color:var(--text-dim);">© 2026 DN | Software & Design Excellence.</p>
   </footer>
 </div>
 
@@ -297,9 +279,7 @@
     for (var i = 0; i < reveals.length; i++) {
       var windowHeight = window.innerHeight;
       var revealTop = reveals[i].getBoundingClientRect().top;
-      if (revealTop < windowHeight - 50) {
-        reveals[i].classList.add("active");
-      }
+      if (revealTop < windowHeight - 70) reveals[i].classList.add("active");
     }
   }
   window.addEventListener('scroll', reveal);
