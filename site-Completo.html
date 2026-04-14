@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="apple-touch-icon" href="favicon.svg">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Site Completo & Otimizado</title>
+  <style>
+    /* (CSS mantendo o padrão visual) */
+    :root { --primary-red: #e63946; --dark-bg: #0a0a0a; --card-bg: #161616; --text-main: #e8eaf0; --grid-color: rgba(230, 57, 70, 0.06); }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--dark-bg); color: var(--text-main); font-family: system-ui, sans-serif; overflow-x: hidden; }
+    .bg-grid { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; background-image: linear-gradient(var(--grid-color) 1px, transparent 1px), linear-gradient(90deg, var(--grid-color) 1px, transparent 1px); background-size: 40px 40px; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 30px 20px; text-align: center; }
+    .btn-back { display: inline-block; text-decoration: none; color: var(--text-main); font-size: 13px; margin-bottom: 15px; opacity: 0.6; transition: 0.3s; }
+    .btn-back:hover { opacity: 1; color: var(--primary-red); }
+    .header-mockup { margin-bottom: 30px; }
+    .header-mockup h1 span { color: var(--primary-red); }
+    .horizontal-gallery { display: flex; gap: 25px; overflow-x: auto; padding: 10px 10px 30px; scroll-snap-type: x mandatory; scrollbar-width: thin; scrollbar-color: var(--primary-red) transparent; -webkit-overflow-scrolling: touch; }
+    .horizontal-gallery::-webkit-scrollbar { height: 6px; }
+    .horizontal-gallery::-webkit-scrollbar-thumb { background: var(--primary-red); border-radius: 10px; }
+    .mockup-wrapper { flex: 0 0 auto; scroll-snap-align: center; background: var(--card-bg); border-radius: 12px; border: 1px solid rgba(230, 57, 70, 0.3); overflow: hidden; max-width: 85vw; box-shadow: 0 15px 35px rgba(0,0,0,0.6); }
+    .browser-bar { background: #222; padding: 8px 12px; display: flex; gap: 5px; border-bottom: 1px solid rgba(255,255,255,0.05); }
+    .dot { width: 7px; height: 7px; border-radius: 50%; background: #444; }
+    .dot.red { background: #ff5f56; }
+    .mockup-image { width: auto; max-width: 100%; height: 450px; object-fit: contain; display: block; background: radial-gradient(circle, #252525 0%, #0a0a0a 100%); }
+    @media (max-width: 768px) { .mockup-image { height: 300px; } }
+    .specs { display: flex; justify-content: center; gap: 20px; margin-top: 30px; flex-wrap: wrap; }
+    .spec-item { background: rgba(255, 255, 255, 0.03); padding: 15px 25px; border-radius: 8px; border-bottom: 2px solid var(--primary-red); text-align: left; min-width: 250px; }
+    .cta-whatsapp { background: var(--primary-red); color: white; text-decoration: none; padding: 15px 35px; border-radius: 6px; font-weight: bold; display: inline-block; margin: 40px 0; transition: 0.4s; }
+    .cta-whatsapp:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(230, 57, 70, 0.4); }
+  </style>
+</head>
+<body>
+  <div class="bg-grid"></div>
+  <div class="container">
+    <a href="index.html" class="btn-back">← Voltar ao Portfólio</a>
+    <div class="header-mockup"><h1>Preview: <span>Site Completo & Otimizado</span></h1></div>
+    <div class="horizontal-gallery">
+      <div class="mockup-wrapper">
+        <div class="browser-bar"><div class="dot red"></div><div class="dot"></div><div class="dot"></div></div>
+        <img src="mockups/sistema1.png" class="mockup-image">
+      </div>
+    </div>
+    <div class="specs">
+      <div class="spec-item"><h4 style="color:var(--primary-red)">Google Rank</h4><p>Configuração técnica para ajudar o seu site a subir nas buscas.</p></div>
+      <div class="spec-item"><h4 style="color:var(--primary-red)">Redes Sociais</h4><p>Otimização de imagem e título para partilhas profissionais no WhatsApp.</p></div>
+    </div>
+    <a href="https://wa.me/5521973561952?text=Olá! Tenho interesse no projeto de Site Completo / Sistema Full Stack. Gostaria de uma consultoria personalizada." class="cta-whatsapp">SOLICITAR SITE COMPLETO</a>
+  </div>
+</body>
+</html>
